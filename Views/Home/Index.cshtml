@@ -1,64 +1,79 @@
-﻿@model MvcApplication4.Models.User
+﻿@model bandbaja.Models.User
+
 @{
-    ViewBag.Title = "Welcome";
+    ViewBag.Title = "index";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
+
+<h2>index</h2>
+<html>
+
+<head>
+</head>
+    <body>
+
+        <div class="col-md-4" id="signIn">
+            <br><br><br><br>
+            <font size="6" color="#415c81"> Sign In</font>
+            <br>
+            <br>
+
+
+
+
+            <div>
+                <br>
+             
+
+    <div class="col-md-4">
+        @Html.Label("User Name")
+
+        @Html.TextBox("id", "", new { placeholder = "user name", @class = "form-control" })
+    </div>
+    <div class ="col-md-4">
+        @Html.Label("Password")
+        @Html.Password("pwd", "", new { placeholder = "password", @class = "form-control" })
+    </div>
+                    <br>
+
+                    @*@Html.RadioButton("choice","patient")
+
+                    <span>&nbsp;</span>
+
+                     @Html.Label("patient")
+
+
+
+
+                     <br>
+                     @Html.RadioButton("choice","doctor") <span>&nbsp;</span>
+                     @Html.Label("doctor")
+
+                     <br>
+                     @Html.RadioButton("choice","admin") <span>&nbsp;</span>
+                     @Html.Label("admin")*@
+                    <div><font color="red"> @TempData["msg"]</font></div>
+                    <br>
+
+
+
+                    <div class="col-md-4">
+
+                        <a href="/Login/Create">
+                            <input type="submit" id="s" />
+                        </a>
+                      
+                       
+                        
+                        <br>
+                        <br>
+                    </div>
+
                 
-            </hgroup>
-           
+
+            </div>
+
         </div>
-    </section>
-}
-<h3>Registration </h3>
-
-<div id="checking">Checking...</div>
-<form method="post" action= "/User/Register">
-
-    <input type="text"  name="Name" value="Username" id="UserName"/> <input id="b1" type="button" value="check"  />
-    <br /><div id="result"></div>
-    <input type="text" name="Password" value="Password" /><br />
-    <input type="submit" class="btn btn-info" value="Register" />
-   
-    
-   
-
-    
-    
-    
-   
 
 
-
-</form>
-@Scripts.Render("~/bundles/jquery")
-<script>
-
-    $(document).ready(function () {
-
-        $('#checking').hide();
-
-        $('#b1').click(function () {
-
-            var userName = $('#UserName').val();
-
-            //alert('User Name ='+ userName);
-            $('#checking').show();
-            $.getJSON("/User/CheckUserName?UserName=" + userName, function (data) {
-                $('#checking').hide();
-                if (data) {
-                    $('#result').text("User already exists in database");
-
-                }
-                else {
-                    $('#result').text("User Name is available");
-                }
-            });
-
-        });
-
-    });
-</script>
+    </body>
+</html>
